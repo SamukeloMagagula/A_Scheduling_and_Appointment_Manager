@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Timesheet — Scheduling and Time Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <span class="brand-text">
+                <span class="brand">Scheduling &amp; Time Management</span>
+                <span class="header-sub">Monthly Timesheet</span>
+            </span>
+        </div>
+        <div class="header-actions">
+            <a href="index.html" class="btn btn-outline">My Week</a>
+            <a href="team.html" class="btn btn-outline">Team Calendar</a>
+            <button class="btn btn-primary" type="button">Export</button>
+            <form method="post" action="/auth/auth.php" class="logout-form" style="margin:0;">
+                <input type="hidden" name="action" value="logout">
+                <button type="submit" class="btn btn-outline">Log out</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="app-shell">
+        <nav class="sidebar" aria-label="Primary">
+            <span class="sidebar-group-label">Schedule</span>
+            <a class="nav-link" href="index.html">My Week</a>
+            <a class="nav-link" href="team.html">Team Calendar</a>
+            <a class="nav-link" href="department.html">Department</a>
+            <span class="sidebar-group-label">Reports</span>
+            <a class="nav-link active" href="timesheet.html">Monthly Timesheet</a>
+            <a class="nav-link" href="logs.html">Activity Logs</a>
+        </nav>
+
+        <main class="content">
+            <div class="page-head">
+                <div class="page-title">
+                    <h1>Monthly Timesheet</h1>
+                    <p class="page-sub">A person's month, day by day, with totals ready to export.</p>
+                </div>
+                <div class="page-tools">
+                    <select class="select" aria-label="Person">
+                        <option>Select person…</option>
+                    </select>
+                    <input class="input" type="month" aria-label="Month">
+                    <button class="btn btn-outline" type="button">View</button>
+                </div>
+            </div>
+
+            <section class="ts-summary" aria-label="Month summary">
+                <div class="stat-card"><div class="stat-number">0h</div><div class="stat-label">Total logged</div></div>
+                <div class="stat-card"><div class="stat-number">0h</div><div class="stat-label">Work</div></div>
+                <div class="stat-card"><div class="stat-number">0h</div><div class="stat-label">Customer</div></div>
+                <div class="stat-card"><div class="stat-number">0h</div><div class="stat-label">Standby</div></div>
+                <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">Days on leave</div></div>
+            </section>
+
+            <div class="table-wrapper">
+                <table class="ts">
+                    <thead>
+                        <tr>
+                            <th style="width:110px;">Date</th>
+                            <th style="width:90px;">Day</th>
+                            <th>Project / Task</th>
+                            <th>Customer</th>
+                            <th class="num" style="width:90px;">Hours</th>
+                            <th style="width:120px;">Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="6" class="muted">Select a person and a month to see the timesheet.</td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">Month total</td>
+                            <td class="num">0h</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

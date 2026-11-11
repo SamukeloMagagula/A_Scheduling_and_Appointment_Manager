@@ -1,0 +1,11 @@
+# Backend secrets and local venv
+backend/.env
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+
+# Editor junk
+.vscode/
+.idea/
+*.swp

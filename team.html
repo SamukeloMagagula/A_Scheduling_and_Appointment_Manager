@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Calendar — Scheduling and Time Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <span class="brand-text">
+                <span class="brand">Scheduling &amp; Time Management</span>
+                <span class="header-sub">Team Calendar</span>
+            </span>
+        </div>
+        <div class="header-actions">
+            <a href="index.html" class="btn btn-outline">My Week</a>
+            <a href="department.html" class="btn btn-outline">Department</a>
+            <form method="post" action="/auth/auth.php" class="logout-form" style="margin:0;">
+                <input type="hidden" name="action" value="logout">
+                <button type="submit" class="btn btn-outline">Log out</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="app-shell">
+        <nav class="sidebar" aria-label="Primary">
+            <span class="sidebar-group-label">Schedule</span>
+            <a class="nav-link" href="index.html">My Week</a>
+            <a class="nav-link active" href="team.html">Team Calendar</a>
+            <a class="nav-link" href="department.html">Department</a>
+            <span class="sidebar-group-label">Reports</span>
+            <a class="nav-link" href="timesheet.html">Monthly Timesheet</a>
+            <a class="nav-link" href="logs.html">Activity Logs</a>
+        </nav>
+
+        <main class="content">
+            <div class="page-head">
+                <div class="page-title">
+                    <h1>Team Calendar</h1>
+                    <p class="page-sub">See the week for everyone on a team. Weekends dimmed, leave shown greyed.</p>
+                </div>
+                <div class="page-tools legend">
+                    <span class="legend-item"><span class="swatch work"></span>Work</span>
+                    <span class="legend-item"><span class="swatch customer"></span>Customer</span>
+                    <span class="legend-item"><span class="swatch standby"></span>Standby</span>
+                    <span class="legend-item"><span class="swatch leave"></span>Leave</span>
+                </div>
+            </div>
+
+            <div class="team-toolbar">
+                <select class="select" aria-label="Select team">
+                    <option>Select team…</option>
+                </select>
+                <input class="input" type="search" placeholder="Search user" aria-label="Search user">
+                <select class="select" aria-label="Scope">
+                    <option>Team view</option>
+                    <option>Individual view</option>
+                </select>
+                <button class="btn btn-outline" type="button">Today</button>
+                <button class="btn btn-ghost" type="button" aria-label="Previous week">&larr;</button>
+                <button class="btn btn-ghost" type="button" aria-label="Next week">&rarr;</button>
+            </div>
+
+            <section class="team-grid-wrap">
+                <div class="team-grid">
+                    <div class="tg-head sticky-left" aria-hidden="true">Week of —</div>
+                    <div class="tg-head"><span>Mon</span><br><span class="d-num">—</span></div>
+                    <div class="tg-head"><span>Tue</span><br><span class="d-num">—</span></div>
+                    <div class="tg-head"><span>Wed</span><br><span class="d-num">—</span></div>
+                    <div class="tg-head"><span>Thu</span><br><span class="d-num">—</span></div>
+                    <div class="tg-head"><span>Fri</span><br><span class="d-num">—</span></div>
+                    <div class="tg-head"><span>Sat</span><br><span class="d-num">—</span></div>
+                    <div class="tg-head"><span>Sun</span><br><span class="d-num">—</span></div>
+
+                    <!-- Empty-state row spans all day columns -->
+                    <div class="tg-user">
+                        <span class="avatar" aria-hidden="true">&nbsp;</span>
+                        <div>
+                            <div class="u-name">No team selected</div>
+                            <div class="u-sub">Pick a team to see its week.</div>
+                        </div>
+                    </div>
+                    <div class="tg-cell" style="grid-column: span 7;">
+                        <div class="cell-empty">Nothing to show yet.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

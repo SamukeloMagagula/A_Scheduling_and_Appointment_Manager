@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Week — Scheduling and Time Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <span class="brand-text">
+                <span class="brand">Scheduling &amp; Time Management</span>
+                <span class="header-sub">My Week</span>
+            </span>
+        </div>
+        <div class="header-actions">
+            <button id="btn-add" class="btn btn-primary" type="button">+ Log Time</button>
+            <button id="btn-remove" class="btn btn-outline" type="button">Remove Entry</button>
+            <button id="btn-search" class="btn btn-outline" type="button">Search User</button>
+            <a href="logs.html" class="btn btn-outline">Logs</a>
+            <form method="post" action="/auth/auth.php" class="logout-form" style="margin:0;">
+                <input type="hidden" name="action" value="logout">
+                <button type="submit" class="btn btn-outline">Log out</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="app-shell">
+        <nav class="sidebar" aria-label="Primary">
+            <span class="sidebar-group-label">Schedule</span>
+            <a class="nav-link active" href="index.html">My Week</a>
+            <a class="nav-link" href="team.html">Team Calendar</a>
+            <a class="nav-link" href="department.html">Department</a>
+            <span class="sidebar-group-label">Reports</span>
+            <a class="nav-link" href="timesheet.html">Monthly Timesheet</a>
+            <a class="nav-link" href="logs.html">Activity Logs</a>
+        </nav>
+
+        <main class="content">
+            <div class="page-head">
+                <div class="page-title">
+                    <h1>My Week</h1>
+                    <p class="page-sub">Log your work, breaks and standby hours as the week goes.</p>
+                </div>
+                <div class="page-tools legend" aria-label="Entry types">
+                    <span class="legend-item"><span class="swatch work"></span>Work</span>
+                    <span class="legend-item"><span class="swatch customer"></span>Customer</span>
+                    <span class="legend-item"><span class="swatch standby"></span>Standby</span>
+                    <span class="legend-item"><span class="swatch break"></span>Break</span>
+                </div>
+            </div>
+
+            <div class="week-layout">
+                <section class="week-grid-wrap" aria-label="Weekly calendar">
+                    <div class="week-toolbar">
+                        <div class="week-range">Week of —</div>
+                        <div class="week-nav">
+                            <button class="btn btn-outline" type="button">Today</button>
+                            <button class="btn btn-ghost" type="button" aria-label="Previous week">&larr;</button>
+                            <button class="btn btn-ghost" type="button" aria-label="Next week">&rarr;</button>
+                        </div>
+                    </div>
+
+                    <div class="week-grid" role="grid">
+                        <div class="wg-head" aria-hidden="true"></div>
+                        <div class="wg-head"><span>Mon</span><span class="d-num">—</span></div>
+                        <div class="wg-head"><span>Tue</span><span class="d-num">—</span></div>
+                        <div class="wg-head"><span>Wed</span><span class="d-num">—</span></div>
+                        <div class="wg-head"><span>Thu</span><span class="d-num">—</span></div>
+                        <div class="wg-head"><span>Fri</span><span class="d-num">—</span></div>
+
+                        <!-- Hour rows: 08:00 to 18:00 -->
+                        <div class="wg-hour">08:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">09:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">10:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">11:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">12:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">13:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">14:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">15:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">16:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="wg-hour">17:00</div>
+                        <div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div><div class="wg-cell"></div>
+
+                        <div class="empty-grid-overlay">No entries for this week yet. Use Log Time to add one.</div>
+                    </div>
+                </section>
+
+                <aside class="side-panel" aria-label="Weekly summary">
+                    <div class="panel">
+                        <div class="panel-head">
+                            <h2>This Week</h2>
+                            <span class="panel-sub">Hours logged</span>
+                        </div>
+                        <div class="stat-number">0h 00m</div>
+                        <div class="stat-label">of 40h target</div>
+                        <div class="progress" style="margin-top:.6rem;"><div style="width:0%"></div></div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-head">
+                            <h2>Split by Category</h2>
+                            <span class="panel-sub">This week</span>
+                        </div>
+                        <div class="pie-wrap">
+                            <svg class="pie" viewBox="0 0 42 42" role="img" aria-label="Weekly category split, no entries yet">
+                                <!-- Background ring (empty state) -->
+                                <circle cx="21" cy="21" r="15.9155" fill="transparent"
+                                        stroke="var(--grey-100)" stroke-width="6"></circle>
+                                <!--
+                                    When data arrives, replace with one <circle> per category:
+                                      stroke=<category colour>, stroke-width=6,
+                                      stroke-dasharray="<slice> <100-slice>",
+                                      stroke-dashoffset="<running offset>",
+                                      transform="rotate(-90 21 21)"
+                                -->
+                                <text x="21" y="20.5" text-anchor="middle"
+                                      font-size="4.2" font-weight="700" fill="var(--black)">0h</text>
+                                <text x="21" y="25.5" text-anchor="middle"
+                                      font-size="2.4" fill="var(--grey-500)" letter-spacing=".3">LOGGED</text>
+                            </svg>
+                            <ul class="pie-legend">
+                                <li><span class="k"><span class="swatch work"></span>Work</span><span class="v">0h</span></li>
+                                <li><span class="k"><span class="swatch customer"></span>Customer</span><span class="v">0h</span></li>
+                                <li><span class="k"><span class="swatch standby"></span>Standby</span><span class="v">0h</span></li>
+                                <li><span class="k"><span class="swatch break"></span>Break</span><span class="v">0h</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-head">
+                            <h2>Monthly Progress</h2>
+                            <span class="panel-sub">Target</span>
+                        </div>
+                        <div class="stat-number">0h</div>
+                        <div class="stat-label">of 160h this month</div>
+                        <div class="progress" style="margin-top:.6rem;"><div style="width:0%"></div></div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <!-- Log Time modal (hidden by default) -->
+    <div id="log-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="log-modal-title">
+        <div class="modal">
+            <div class="modal-head">
+                <h2 id="log-modal-title">Log Time</h2>
+                <button class="btn-close" type="button" aria-label="Close" data-close>&times;</button>
+            </div>
+            <form class="form-grid" autocomplete="off" onsubmit="event.preventDefault();">
+                <div class="form-row">
+                    <label for="f-date">Date</label>
+                    <input id="f-date" class="input" type="date">
+                </div>
+                <div class="form-row">
+                    <label for="f-type">Type</label>
+                    <select id="f-type" class="select">
+                        <option value="work">Work</option>
+                        <option value="customer">Customer</option>
+                        <option value="standby">Standby</option>
+                        <option value="break">Break</option>
+                        <option value="leave">Leave</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="f-start">Start</label>
+                    <input id="f-start" class="input" type="time">
+                </div>
+                <div class="form-row">
+                    <label for="f-end">End</label>
+                    <input id="f-end" class="input" type="time">
+                </div>
+                <div class="form-row full">
+                    <label for="f-project">Project or Task</label>
+                    <input id="f-project" class="input" type="text" placeholder="e.g. Internal review, release prep">
+                </div>
+                <div class="form-row full">
+                    <label for="f-customer">Customer (optional)</label>
+                    <select id="f-customer" class="select">
+                        <option value="">— None —</option>
+                    </select>
+                </div>
+                <div class="form-row full">
+                    <label for="f-notes">Notes</label>
+                    <textarea id="f-notes" rows="2" placeholder="Short description of what was done"></textarea>
+                </div>
+                <div class="form-actions full">
+                    <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Entry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var modal = document.getElementById('log-modal');
+            var open  = document.getElementById('btn-add');
+            if (open && modal) {
+                open.addEventListener('click', function () { modal.classList.remove('hidden'); });
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal || e.target.hasAttribute('data-close')) modal.classList.add('hidden');
+                });
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') modal.classList.add('hidden');
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

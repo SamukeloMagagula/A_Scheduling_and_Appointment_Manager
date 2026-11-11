@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department — Scheduling and Time Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <span class="brand-text">
+                <span class="brand">Scheduling &amp; Time Management</span>
+                <span class="header-sub">Department</span>
+            </span>
+        </div>
+        <div class="header-actions">
+            <a href="index.html" class="btn btn-outline">My Week</a>
+            <a href="team.html" class="btn btn-outline">Team Calendar</a>
+            <form method="post" action="/auth/auth.php" class="logout-form" style="margin:0;">
+                <input type="hidden" name="action" value="logout">
+                <button type="submit" class="btn btn-outline">Log out</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="app-shell">
+        <nav class="sidebar" aria-label="Primary">
+            <span class="sidebar-group-label">Schedule</span>
+            <a class="nav-link" href="index.html">My Week</a>
+            <a class="nav-link" href="team.html">Team Calendar</a>
+            <a class="nav-link active" href="department.html">Department</a>
+            <span class="sidebar-group-label">Reports</span>
+            <a class="nav-link" href="timesheet.html">Monthly Timesheet</a>
+            <a class="nav-link" href="logs.html">Activity Logs</a>
+        </nav>
+
+        <main class="content">
+            <div class="page-head">
+                <div class="page-title">
+                    <h1>Department</h1>
+                    <p class="page-sub">Every team in the department. Open a team to see its week.</p>
+                </div>
+                <div class="page-tools">
+                    <input class="input" type="search" placeholder="Filter teams" aria-label="Filter teams">
+                </div>
+            </div>
+
+            <section class="kpi-grid" aria-label="Department summary">
+                <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">Teams</div></div>
+                <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">People</div></div>
+                <div class="stat-card"><div class="stat-number">0h</div><div class="stat-label">Logged this week</div></div>
+                <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">On standby this week</div></div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-head">
+                    <h2>Teams</h2>
+                    <span class="panel-sub">Right now</span>
+                </div>
+                <div class="dept-grid">
+                    <!-- Empty state card; real cards follow this shape -->
+                    <div class="team-card" aria-disabled="true" style="cursor:default;">
+                        <div class="tc-head">
+                            <span class="tc-name">No teams yet</span>
+                            <span class="tc-size">0 people</span>
+                        </div>
+                        <div class="dot-row" aria-hidden="true">
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
+                        <div class="tc-metric"><span>Free now</span><b>—</b></div>
+                        <div class="tc-metric"><span>Hours this week</span><b>0h</b></div>
+                        <div class="tc-metric"><span>On standby</span><b>—</b></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-head">
+                    <h2>Status Key</h2>
+                    <span class="panel-sub">Dots on team cards</span>
+                </div>
+                <div class="legend">
+                    <span class="legend-item"><span class="dot free"></span>Free</span>
+                    <span class="legend-item"><span class="dot busy"></span>Busy</span>
+                    <span class="legend-item"><span class="dot standby"></span>Standby</span>
+                    <span class="legend-item"><span class="dot leave"></span>Leave</span>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
